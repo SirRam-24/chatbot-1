@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static' , filename='style.css')}}">
+</head>
+<body>
+<div class="app">
+
+   
+    <header class="header">
+        <div class="logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5"/>
+                <path d="M2 12l10 5 10-5"/>
+            </svg>
+        </div>
+        <div class="header-info">
+            <h1>HMI</h1>
+            <p><span class="status-dot"></span> Online</p>
+        </div>
+    </header>
+
+
+    <div class="messages" id="messages">
+        <div class="empty-state" id="emptyState">
+            <div class="empty-icon">✦</div>
+            <h2>Hey There Iam an HMI AI</h2>
+            <p>Ask me anything. I'm here to assist you with whatever you need.</p>
+            <div class="suggestions">
+                <button class="suggestion" onclick="fillSuggestion(this)">Explain quantum computing</button>
+                <button class="suggestion" onclick="fillSuggestion(this)">Write a Python script</button>
+                <button class="suggestion" onclick="fillSuggestion(this)">Summarize an article</button>
+                <button class="suggestion" onclick="fillSuggestion(this)">Help me brainstorm</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="input-area">
+        <div class="input-wrap">
+            <textarea id="input" placeholder="Message…" rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+            <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"/>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
+            </button>
+        </div>
+        <p class="hint">Enter to send &nbsp;·&nbsp; Shift+Enter for new line</p>
+    </div>
+</div>
+
+<script src="{{url_for('static' , filename='script.js')}}"></script>
+</body>
+</html>
