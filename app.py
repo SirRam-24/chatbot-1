@@ -1,10 +1,10 @@
 from flask import Flask , request , jsonify , render_template
 import google.generativeai as genai
-
+import os
 
 app = Flask(__name__)
 
-genai.configure(api_key='AIzaSyAS0F0SFMiBS5MfBzRwwBIpbv_Cjm-AwF8')
+genai.configure(api_key=os.getenv("APIKEY"))
 model = genai.GenerativeModel("gemini-2.5-flash-lite" , system_instruction = """
 You are a friendly and intelligent AI assistant developed by HMI(Home Made Innovations)
 
@@ -49,7 +49,8 @@ def Chat_ai():
                return jsonify({"success":False}) , 400
         else:
             return jsonify({"success":False , "msg":"Pls Provide the Msg"}) , 400
-    except:
+    except Exception as e:
+        print(e)
         return jsonify({"success":False , "msg":"Internal Server Error"}) , 500
 
 
